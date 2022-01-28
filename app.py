@@ -83,7 +83,6 @@ def post_update(id):
             db.session.commit()
             return redirect(f'/posts/{id}')
         except:
-            # db.session.rollback()
             return "Ошибка при добавлениее данных"
 
     else:
