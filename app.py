@@ -36,10 +36,12 @@ def posts():
     articles = Article.query.order_by(Article.date.desc()).all()
     return render_template('posts.html', articles=articles)
 
+
 @app.route('/posts/<int:id>')
 def post_detail(id):
     article = Article.query.get(id)
     return render_template('post_detail.html', article=article)
+
 
 @app.route('/posts/<int:id>/del')
 def post_delete(id):
@@ -65,11 +67,11 @@ def create_article():
             db.session.commit()
             return redirect('/posts')
         except:
-            # db.session.rollback()
             return "Ошибка при добавлениее данных"
 
     else:
         return render_template('create_article.html')
+
 
 @app.route('/posts/<int:id>/update', methods=['POST', 'GET'])
 def post_update(id):
@@ -83,11 +85,10 @@ def post_update(id):
             db.session.commit()
             return redirect(f'/posts/{id}')
         except:
-            return "Ошибка при добавлениее данных"
+            return "Ошибка при обновлении данных"
 
     else:
         return render_template('post_update.html', article=article)
-
 
 
 if __name__ == '__main__':
