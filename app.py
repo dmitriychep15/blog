@@ -67,7 +67,7 @@ def create_article():
             db.session.commit()
             return redirect('/posts')
         except:
-            return "Ошибка при добавлениее данных"
+            return "Ошибка при добавлении данных"
 
     else:
         return render_template('create_article.html')
